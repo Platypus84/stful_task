@@ -15,7 +15,7 @@ class MainScreen extends StatelessWidget {
             CounterCard(),
             CounterCard(),
             CounterCard(),
-            Text('Summe der Zählerstände: ${CounterCard().cardCount}'),
+            Text('Summe der Zählerstände: ${CounterCard().getSumCount}'),
           ],
         ),
       ),

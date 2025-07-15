@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+int sumCount = 0;
+
 class CounterCard extends StatefulWidget {
   int _count = 0;
   num _sumCount = 0;
@@ -11,6 +13,10 @@ class CounterCard extends StatefulWidget {
 
   get cardCount {
     return _count;
+  }
+
+  get getSumCount {
+    return _sumCount;
   }
 }
 
@@ -34,10 +40,10 @@ class _CounterCardState extends State<CounterCard> {
             Text('Zähler: ${widget._count}'),
             ElevatedButton(
               onPressed: () {
-                widget._sumCount++;
                 setState(() {
                   countUp();
-
+                  sumCount++;
+                  widget._sumCount = sumCount;
                   print('sumCount ist ${widget._sumCount}');
                 });
               },
@@ -50,21 +56,21 @@ class _CounterCardState extends State<CounterCard> {
   }
 }
 
-// class SumCount extends StatefulWidget {
-//   const SumCount({super.key});
+class SumCount extends StatefulWidget {
+  const SumCount({super.key});
 
-//   @override
-//   State<SumCount> createState() => _SumCountState();
-// }
+  @override
+  State<SumCount> createState() => _SumCountState();
+}
 
-// class _SumCountState extends State<SumCount> {
-//   int sumCount = 0;
-//   sumCounter() {
-//     sumCount++;
-//   }
+class _SumCountState extends State<SumCount> {
+  sumCounter() {
+    print('sumCount ist ${sumCount}');
+    return sumCount;
+  }
 
-//   @override
-//   Widget build(BuildContext context) {
-//     return const Placeholder();
-//   }
-// }
+  @override
+  Widget build(BuildContext context) {
+    return Text('Summe der Zählerstände: ${sumCounter()}');
+  }
+}
